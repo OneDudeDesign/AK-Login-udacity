@@ -49,9 +49,9 @@ class MainFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
-        // TODO Remove the two lines below once observeAuthenticationState is implemented.
-        binding.welcomeText.text = viewModel.getFactToDisplay(requireContext())
-        binding.authButton.text = getString(R.string.login_btn)
+        // DONE Remove the two lines below once observeAuthenticationState is implemented.
+        //binding.welcomeText.text = viewModel.getFactToDisplay(requireContext())
+        //binding.authButton.text = getString(R.string.login_btn)
 
         return binding.root
     }
@@ -63,6 +63,10 @@ class MainFragment : Fragment() {
         binding.authButton.setOnClickListener {
             // DONE call launchSignInFlow when authButton is clicked
             binding.authButton.setOnClickListener { launchSignInFlow() }
+        }
+        binding.settingsBtn.setOnClickListener {
+            val action = MainFragmentDirections.actionMainFragmentToSettingsFragment()
+            findNavController().navigate(action)
         }
     }
 
